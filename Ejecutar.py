@@ -53,22 +53,22 @@ def adivinaMaquina():
                     numeroMaquina.listaEnBaseACondicionales(numeroPersona.getContent())
                     valida = False
         print("¿Es este tu numero?: " + str(numeroMaquina.content))
-        numeroMaquina.resultado.limpiar()
-        while not numeroMaquina.resultado.validate():
-            numeroMaquina.resultado.limpiar()
-            numeroMaquina.resultado.setCorrectos(int(input("Introduce los valores correctos: ")))
-            numeroMaquina.resultado.setIncorrectos(int(input("Introduce los valores incorrectos: ")))
-            numeroMaquina.resultado.setRegulares(int(input("Introduce los valores regulares: ")))
-            if not numeroMaquina.resultado.validate():
+        numeroPersona.resultado.limpiar()
+        while not numeroPersona.resultado.validate():
+            numeroPersona.resultado.limpiar()
+            numeroPersona.resultado.setCorrectos(int(input("Introduce los valores correctos: ")))
+            numeroPersona.resultado.setIncorrectos(int(input("Introduce los valores incorrectos: ")))
+            numeroPersona.resultado.setRegulares(int(input("Introduce los valores regulares: ")))
+            if not numeroPersona.resultado.validate():
                 print("La suma de valores no puede ser mayor o menor a 4")
-        if numeroMaquina.resultado.getCorrectos() > numeroPersona.resultado.getCorrectos():
+        if numeroPersona.resultado.getCorrectos() > numeroMaquina.resultado.getCorrectos() :
             listaInvalidos.append(numeroPersona.content.copy())
             numeroPersona.setContent(numeroMaquina.getContent().copy())
             numeroMaquina.resultado.setCorrectos(numeroPersona.resultado.getCorrectos())
             numeroMaquina.resultado.setRegulares(numeroPersona.resultado.getRegulares())
             numeroMaquina.resultado.setIncorrectos(numeroPersona.resultado.getIncorrecto())
-        elif numeroMaquina.resultado.getCorrectos() == numeroPersona.resultado.getCorrectos():
-            if numeroMaquina.resultado.getRegulares() >= numeroPersona.resultado.getRegulares():
+        elif numeroPersona.resultado.getCorrectos() == numeroMaquina.resultado.getCorrectos():
+            if numeroPersona.resultado.getRegulares() >= numeroMaquina.resultado.getRegulares():
                 listaInvalidos.append(numeroPersona.content.copy())
                 numeroPersona.setContent(numeroMaquina.getContent().copy())
                 numeroMaquina.resultado.setCorrectos(numeroPersona.resultado.getCorrectos())
@@ -79,5 +79,5 @@ def adivinaMaquina():
     print("Ganaste")
 
 
-
-adivinaMaquina()
+#adivinaPersona()
+#adivinaMaquina()
