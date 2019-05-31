@@ -62,20 +62,22 @@ def adivinaMaquina():
             if not numeroMaquina.resultado.validate():
                 print("La suma de valores no puede ser mayor o menor a 4")
         if numeroMaquina.resultado.getCorrectos() > numeroPersona.resultado.getCorrectos():
-            reasignarResultadosLista(numeroPersona,numeroMaquina,listaInvalidos)
+            listaInvalidos.append(numeroPersona.content.copy())
+            numeroPersona.setContent(numeroMaquina.getContent().copy())
+            numeroMaquina.resultado.setCorrectos(numeroPersona.resultado.getCorrectos())
+            numeroMaquina.resultado.setRegulares(numeroPersona.resultado.getRegulares())
+            numeroMaquina.resultado.setIncorrectos(numeroPersona.resultado.getIncorrecto())
         elif numeroMaquina.resultado.getCorrectos() == numeroPersona.resultado.getCorrectos():
             if numeroMaquina.resultado.getRegulares() >= numeroPersona.resultado.getRegulares():
-                reasignarResultadosLista(numeroPersona,numeroMaquina, listaInvalidos)
+                listaInvalidos.append(numeroPersona.content.copy())
+                numeroPersona.setContent(numeroMaquina.getContent().copy())
+                numeroMaquina.resultado.setCorrectos(numeroPersona.resultado.getCorrectos())
+                numeroMaquina.resultado.setRegulares(numeroPersona.resultado.getRegulares())
+                numeroMaquina.resultado.setIncorrectos(numeroPersona.resultado.getIncorrecto())
         else:
             listaInvalidos.append(numeroMaquina.content.copy())
     print("Ganaste")
 
- 
-def reasignarResultadosLista(numeroPersona,numeroMaquina,listaInvalidos):
-    listaInvalidos.append(numeroPersona.content.copy())
-    numeroPersona.setContent(numeroMaquina.getContent())
-    numeroMaquina.resultado.setCorrectos(numeroPersona.resultado.getCorrectos())
-    numeroMaquina.resultado.setRegulares(numeroPersona.resultado.getRegulares())
-    numeroMaquina.resultado.setIncorrectos(numeroPersona.resultado.getIncorrecto())
+
 
 adivinaMaquina()
